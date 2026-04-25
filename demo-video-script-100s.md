@@ -1,4 +1,6 @@
-# ZenIntake 1:40 Demo Video Script (100 seconds)
+Recording is here for review
+https://www.loom.com/share/2eab5578542a472f96aa4f6b8cd7910a
+
 
 Target app URL:
 - https://zenintake-web-poc.azurewebsites.net/
@@ -6,6 +8,10 @@ Target app URL:
 Recording target:
 - 1 minute 40 seconds total
 - Single take
+
+Recording is here for review
+https://www.loom.com/share/2eab5578542a472f96aa4f6b8cd7910a
+
 
 ## Timeline + exact narration
 
