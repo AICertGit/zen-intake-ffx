@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenIntake | AI for Government Pitch Deck</title>
+  <style>
+    :root {
+      --bg: #eaf1f8;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --muted: #4b5d73;
+      --line: #d7e3f0;
+
+      --navy: #0a3159;
+      --blue: #0f5f9a;
+      --teal: #0f8c8b;
+      --green: #167c4b;
+      --amber: #a35a00;
+
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 8% 6%, #f8fbff 0%, var(--bg) 36%, #e3ecf6 100%);
+    }
+
+    .deck-wrap {
+      max-width: 1380px;
+      margin: 18px auto;
+      padding: 14px;
+      border: 2px solid #0b4f8a;
+      border-radius: 10px;
+      background: #f7fbff;
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: #0b3d6e;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 8px 12px;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(10, 49, 89, 0.24);
+    }
+
+    .btn.alt {
+      background: linear-gradient(90deg, #0f7d8b, #0f5f9a);
+    }
+
+    .status {
+      color: #25415f;
+      font-size: 13px;
+      font-weight: 700;
+      background: #eff6ff;
+      border: 1px solid #d5e4f8;
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    .slide {
+      display: none;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      min-height: 690px;
+      box-shadow: var(--shadow);
+    }
+
+    .slide.active { display: block; }
+
+    h1 {
+      margin: 0 0 10px;
+      color: #0b3c6d;
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.1;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      color: #0d4476;
+      font-size: clamp(28px, 2.6vw, 42px);
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      color: #0f355d;
+      font-size: clamp(21px, 1.7vw, 30px);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.25vw, 21px);
+      line-height: 1.42;
+      font-weight: 600;
+    }
+
+    .sub {
+      margin-top: 8px;
+      color: #345170;
+      font-size: clamp(17px, 1.3vw, 23px);
+      font-weight: 700;
+    }
+
+    .hero {
+      background: linear-gradient(110deg, #0a3159 0%, #0f5f9a 52%, #0f8c8b 100%);
+      border-radius: 18px;
+      color: #fff;
+      padding: 24px;
+      margin-top: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero p {
+      color: #dcecff;
+      font-size: clamp(17px, 1.2vw, 22px);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .card {
+      border: 1px solid #d8e4f1;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+
+    .card .label {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 8px;
+      font-size: 11px;
+      letter-spacing: 0.3px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 800;
+      background: #0f5f9a;
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+      color: #2a435f;
+      font-size: clamp(15px, 1.1vw, 19px);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #cfe0f2;
+      background: #f7fbff;
+      color: #244566;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      border-radius: 12px;
+      border: 1px solid #d5e4f3;
+      background: #ffffff;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.07);
+    }
+
+    .metric .v {
+      font-size: clamp(24px, 2.2vw, 36px);
+      font-weight: 900;
+      color: #0b3a68;
+      line-height: 1;
+    }
+
+    .metric .k {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #49627d;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+
+    .timeline {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .step {
+      border: 1px solid #d8e3f0;
+      border-top: 4px solid #0f8c8b;
+      border-radius: 12px;
+      background: #fff;
+      padding: 10px;
+      min-height: 150px;
+    }
+
+    .step b {
+      display: inline-block;
+      margin-bottom: 6px;
+      color: #0e375f;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: #3e556e;
+      line-height: 1.35;
+    }
+
+    .footer {
+      margin-top: 12px;
+      text-align: right;
+      color: #57708b;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1100px) {
+      .grid-2, .grid-3, .metric-row, .timeline { grid-template-columns: 1fr; }
+      .slide { min-height: auto; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .deck-wrap { border: 0; box-shadow: none; margin: 0; padding: 0; }
+      .topbar { display: none; }
+      .slide { display: block !important; page-break-after: always; min-height: auto; box-shadow: none; }
+      .footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-wrap">
+    <div class="topbar">
+      <div class="brand">ZenIntake | AI for Government Hackathon Pitch Deck</div>
+      <div class="actions">
+        <button class="btn" onclick="prevSlide()">Prev</button>
+        <button class="btn" onclick="nextSlide()">Next</button>
+        <button class="btn alt" onclick="window.print()">Print / Save PDF</button>
+        <div class="status" id="status">Slide 1 / 10</div>
+      </div>
+    </div>
+
+    <section class="slide active">
+      <h1>ZenIntake</h1>
+      <p class="sub">AI-powered Intake Modernization for Fairfax County NCS Child Care Subsidy</p>
+      <div class="hero">
+        <p>
+          Track: Intake & Applications | Hackathon: c0mpiled-10 / DC AI for Government<br>
+          Mission: Reduce intake friction, prevent duplicate records, and strengthen anti-fraud decisions with explainable automation.
+        </p>
+      </div>
+      <div class="pill-row">
+        <span class="pill">Applicant-first UX</span>
+        <span class="pill">MCI fuzzy matching</span>
+        <span class="pill">Crustdata fraud checks</span>
+        <span class="pill">Rule-based decisions</span>
+        <span class="pill">Azure OpenAI extraction</span>
+      </div>
+      <div class="footer">Use left/right arrow keys to navigate</div>
+    </section>
+
+    <section class="slide">
+      <h2>The Business Problem</h2>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">Current Pain</span>
+          <ul>
+            <li>Manual intake is slow and inconsistent.</li>
+            <li>Duplicate client profiles increase rework.</li>
+            <li>Employer/W2 fraud checks are fragmented.</li>
+            <li>Caseworkers spend time on triage instead of decisions.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Why It Matters</span>
+          <ul>
+            <li>Delayed benefit access for families.</li>
+            <li>Higher administrative burden and cycle times.</li>
+            <li>Reduced confidence in intake data quality.</li>
+            <li>Limited auditability across intake decisions.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric"><div class="v">1x</div><div class="k">Single Submission</div></div>
+        <div class="metric"><div class="v">3</div><div class="k">Decision Outcomes</div></div>
+        <div class="metric"><div class="v">2</div><div class="k">Fraud Defense Layers</div></div>
+        <div class="metric"><div class="v">100%</div><div class="k">Rules Transparency</div></div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Our Solution</h2>
+      <p>ZenIntake is an applicant-first portal that automates pre-screening while preserving human-in-the-loop governance.</p>
+      <div class="timeline">
+        <div class="step"><b>1. Applicant Intake</b><p>Resident enters core application details in a guided form.</p></div>
+        <div class="step"><b>2. AI Normalization</b><p>Azure OpenAI optionally extracts structured fields from OCR text.</p></div>
+        <div class="step"><b>3. Identity Match</b><p>Fuzzy MCI matching links to existing golden records and reduces duplicates.</p></div>
+        <div class="step"><b>4. Employer Verify</b><p>Crustdata validates declared employer with resilient fallback behavior.</p></div>
+        <div class="step"><b>5. Decision Routing</b><p>Rules output AUTO_APPROVE, MANUAL_REVIEW, or NOT_ELIGIBLE.</p></div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Key Components</h2>
+      <div class="grid-3">
+        <div class="card">
+          <span class="label">Web App</span>
+          <h3>Streamlit Frontend</h3>
+          <ul>
+            <li>Applicant-first form</li>
+            <li>Transparent result display</li>
+            <li>Local and Azure hosted modes</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Identity</span>
+          <h3>MCI Fuzzy Matching</h3>
+          <ul>
+            <li>thefuzz token similarity</li>
+            <li>Name + address confidence</li>
+            <li>Duplicate profile prevention</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Fraud</span>
+          <h3>Crustdata Verification</h3>
+          <ul>
+            <li>Employer legitimacy checks</li>
+            <li>Trust/headcount indicators</li>
+            <li>Graceful fallback if API unavailable</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">AI</span>
+          <h3>Azure OpenAI</h3>
+          <ul>
+            <li>Optional OCR-to-JSON extraction</li>
+            <li>Strict schema output for consistency</li>
+            <li>Environment-managed credentials</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Governance</span>
+          <h3>Rule Engine</h3>
+          <ul>
+            <li>Clear pass/fail checklist</li>
+            <li>Auditable decision rationale</li>
+            <li>Caseworker override path</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>How Client Matching Works</h2>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">Identity Resolution</span>
+          <ul>
+            <li>Input: applicant name + address</li>
+            <li>Compare against MCI-like resident records</li>
+            <li>Compute fuzzy confidence per attribute</li>
+            <li>Trigger strong match when thresholds are met</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Anti-Fraud Enrichment</span>
+          <ul>
+            <li>Crustdata is used for employer verification, not primary resident identity.</li>
+            <li>Cross-check employer legitimacy and trust signals.</li>
+            <li>Feed verification results into decision confidence.</li>
+            <li>Fallback preserves uptime during external API disruption.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="pill">Identity source: MCI data</span>
+        <span class="pill">Employer source: Crustdata API</span>
+        <span class="pill">Decision source: transparent rules + optional ML</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Machine Learning Model (Decision Assist)</h2>
+      <p>ML is optional and assistive. Final governance remains explainable and rule-aligned.</p>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">Model</span>
+          <h3>Logistic Priority Scorer</h3>
+          <ul>
+            <li>Inputs: name score, address score, employer verification status, declared income, existing benefits flag</li>
+            <li>Output: priority probability for routing support</li>
+            <li>Stored artifact in local ML folder for controlled usage</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Policy Position</span>
+          <h3>Human-in-the-loop</h3>
+          <ul>
+            <li>Rules are primary gate for eligibility outcomes</li>
+            <li>ML score augments confidence, does not replace policy checks</li>
+            <li>Supports explainability and public-sector accountability</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Azure and Resource Footprint</h2>
+      <div class="grid-3">
+        <div class="card">
+          <span class="label">Hosting</span>
+          <ul>
+            <li>Azure App Service (Linux)</li>
+            <li>Public URL for pilot access</li>
+            <li>Environment-based app settings</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">AI Service</span>
+          <ul>
+            <li>Azure OpenAI resource + deployment</li>
+            <li>Structured extraction endpoint</li>
+            <li>API-version controlled calls</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Data & Integrations</span>
+          <ul>
+            <li>Mock MCI data lake (Pandas)</li>
+            <li>Crustdata employer API</li>
+            <li>Rule + optional ML layer</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hero" style="margin-top: 14px;">
+        <p>
+          Operational principle: deterministic checks first (rules + matching), AI/ML assist second, caseworker authority always preserved.
+        </p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Testing and Demo Validation</h2>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">Functional Scenarios</span>
+          <ul>
+            <li>Eligible sample: expected AUTO_APPROVE path</li>
+            <li>High income sample: expected NOT_ELIGIBLE</li>
+            <li>Weak identity confidence: expected MANUAL_REVIEW</li>
+            <li>API disruption simulation: fallback behavior maintained</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">What to Observe</span>
+          <ul>
+            <li>MCI match confidence and linked record behavior</li>
+            <li>Crustdata verification status and source indicator</li>
+            <li>Rule checklist transparency and failed-rule reporting</li>
+            <li>Final route is consistent with policy criteria</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Impact for Government Operations</h2>
+      <div class="metric-row">
+        <div class="metric"><div class="v">Faster</div><div class="k">Intake Throughput</div></div>
+        <div class="metric"><div class="v">Lower</div><div class="k">Duplicate Profile Risk</div></div>
+        <div class="metric"><div class="v">Higher</div><div class="k">Fraud Detection Confidence</div></div>
+        <div class="metric"><div class="v">Clear</div><div class="k">Auditability</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">Citizen Value</span>
+          <ul>
+            <li>Simpler and faster application experience</li>
+            <li>Reduced re-submission and waiting time</li>
+            <li>More predictable processing outcomes</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">County Value</span>
+          <ul>
+            <li>Caseworker focus on exceptions</li>
+            <li>Standardized intake quality</li>
+            <li>Pilot-ready baseline for multi-program expansion</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Roadmap and Ask</h2>
+      <div class="grid-2">
+        <div class="card">
+          <span class="label">Next 30-90 Days</span>
+          <ul>
+            <li>Policy tuning with NCS domain experts</li>
+            <li>Expanded MCI attributes and edge-case rules</li>
+            <li>Monitoring, alerts, and dashboarding</li>
+            <li>Pilot cohort and baseline KPI measurement</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Pilot Ask</span>
+          <ul>
+            <li>Sandbox data access with governance controls</li>
+            <li>Program policy validation workshop</li>
+            <li>Caseworker feedback loop on decision quality</li>
+            <li>Approval to run limited production pilot</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hero" style="margin-top: 14px;">
+        <p>
+          ZenIntake demonstrates a pragmatic, explainable, and deployable AI pattern for county intake modernization.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let index = 0;
+
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      document.getElementById('status').textContent = `Slide ${index + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() {
+      if (index < slides.length - 1) {
+        index += 1;
+        render();
+      }
+    }
+
+    function prevSlide() {
+      if (index > 0) {
+        index -= 1;
+        render();
+      }
+    }
+
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+      if (e.key.toLowerCase() === 'home') { index = 0; render(); }
+      if (e.key.toLowerCase() === 'end') { index = slides.length - 1; render(); }
+    });
+  </script>
+</body>
+</html>
